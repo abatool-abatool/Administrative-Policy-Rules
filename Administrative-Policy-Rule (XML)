@@ -8,16 +8,17 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Speak</action-type>
-				</action>
+				<action-sequence>
+					<action>Take-User-Photo</action>
+					<action>Ask-Rutine-Questions</action>
+				</action-sequence>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
 				<action>
-					<action-type>Stream</action-type>
+					<action-type>Stream-Video</action-type>
 				</action>
 			</case>
 			<case>
@@ -25,7 +26,7 @@
 					<device>Smart-Speaker</device>
 				</condition>
 				<action>
-					<action-type>Speak-(gym)</action-type>
+					<action-type>Track-User-Voice</action-type>
 				</action>
 			</case>
 			<case>
@@ -44,16 +45,17 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Speak-(say recipes in kitchen, say names for attendance purpose and so on)</action-type>
-				</action>
+				<action-type>
+					<action>Display-Recipe-in-Kitchen</action>
+					<action>Display-Exercise-in-Gym</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
 				<action>
-					<action-type>Stream-(as security camera can assist owner of building)</action-type>
+					<action-type>Stream-Video</action-type>
 				</action>
 			</case>
 			<case>
@@ -61,7 +63,7 @@
 					<device>Smart-Speaker</device>
 				</condition>
 				<action>
-					<action-type>Speak-(music names)</action-type>
+					<action-type>Play-Music</action-type>
 				</action>
 			</case>
 			<case>
@@ -119,7 +121,7 @@
 					<device>Smart-Robot</device>
 				</condition>
 				<action>
-					<action-type>Speak-Smoothly</action-type>
+					<action-type>Keep-Volume-Low-While-Communicating</action-type>
 				</action>
 			</case>
 			<case>
@@ -127,7 +129,7 @@
 					<device>Smart-Camera</device>
 				</condition>
 				<action>
-					<action-type>Keep-Silent-While-Streaming</action-type>
+					<action-type>Keep-Silent-Mode-On-While-Streaming</action-type>
 				</action>
 			</case>
 			<case>
@@ -143,7 +145,7 @@
 					<device>Smart-Wheelchair</device>
 				</condition>
 				<action>
-					<action-type>Guide-Smoothly(do not say locations louder)</action-type>
+					<action-type>Do-Not-Say-Location-Names-Louder</action-type>
 				</action>
 			</case>
 		</rule>
@@ -154,16 +156,17 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Communicate-Promptly</action-type>
-				</action>
+				<action-type>
+					<action>Complete-Monitoring-Request-Quickly</action>
+					<action>Complete-Assisting-Request-Quickly</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
 				<action>
-					<action-type>Snap-Promptly</action-type>
+					<action-type>Snap-Photos-Promptly</action-type>
 				</action>
 			</case>
 			<case>
@@ -171,7 +174,7 @@
 					<device>Smart-Speaker</device>
 				</condition>
 				<action>
-					<action-type>Play-Music-Promptly</action-type>
+					<action-type>Do-Not-Delay-in-Playing-Music</action-type>
 				</action>
 			</case>
 			<case>
@@ -191,7 +194,7 @@
 					<device>Smart-Robot</device>
 				</condition>
 				<action>
-					<action-type>Communicate-Smoothly</action-type>
+					<action-type>Do-Not-Move-Away-While-Communicating</action-type>
 				</action>
 			</case>
 			<case>
@@ -199,7 +202,7 @@
 					<device>Smart-Camera</device>
 				</condition>
 				<action>
-					<action-type>Display-Snaps-Smoothly</action-type>
+					<action-type>Keep-Displaying-Snaps</action-type>
 				</action>
 			</case>
 			<case>
@@ -207,7 +210,7 @@
 					<device>Smart-Speaker</device>
 				</condition>
 				<action>
-					<action-type>Speak</action-type>
+					<action-type>Keep-Playing-Music</action-type>
 				</action>
 			</case>
 			<case>
@@ -215,7 +218,7 @@
 					<device>Smart-Wheelchair</device>
 				</condition>
 				<action>
-					<action-type>Display-Locations</action-type>
+					<action-type>Keep-Displaying-Locations</action-type>
 				</action>
 			</case>
 		</rule>
@@ -288,34 +291,6 @@
 				</condition>
 				<action>
 					<action-type>Face-Recognition</action-type>
-				</action>
-			</case>
-		</rule>
-		<rule>
-			<rule-name>Keep-An-Eye-On-Workers</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<condition>
-					<device>Smart-Robot</device>
-				</condition>
-				<action>
-					<action-type>Check-Duty-Time</action-type>
-				</action>
-			</case>
-			<case>
-				<condition>
-					<device>Smart-Camera</device>
-				</condition>
-				<action>
-					<action-type>Stream</action-type>
-				</action>
-			</case>
-			<case>
-				<condition>
-					<device>Smart-Speaker</device>
-				</condition>
-				<action>
-					<action-type>Take-Attendance</action-type>
 				</action>
 			</case>
 		</rule>
