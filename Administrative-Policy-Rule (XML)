@@ -10,7 +10,7 @@
 				</condition>
 				<action-sequence>
 					<action>Take-User-Photo</action>
-					<action>Ask-Rutine-Questions</action>
+					<action>Ask-Routine-Questions</action>
 				</action-sequence>
 			</case>
 			<case>
