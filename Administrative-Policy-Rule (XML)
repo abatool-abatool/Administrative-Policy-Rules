@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <administrative-policy>
-	<authorisation-rules id="R2">
+	<authorisation-rules id="R1">
 		<rule>
 			<rule-name>Monitor-User</rule-name>
 			<device-type>Actuators</device-type>
@@ -9,7 +9,8 @@
 					<device>Smart-Robot</device>
 				</condition>
 				<action-sequence>
-					<action>Take-User-Photo</action>
+					<action>Recognise-Face</action>
+					<action>Capture-Photo</action>
 					<action>Ask-Routine-Questions</action>
 				</action-sequence>
 			</case>
@@ -17,25 +18,29 @@
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Stream-Video</action-type>
-				</action>
+				<action-sequence>
+					<action>Stream-Video</action>
+					<action>Capture-Photo</action>
+				</action-sequence>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Track-User-Voice</action-type>
-				</action>
+				<action-type>
+				<!--Speaker at the main door recognise user's voice to let him/her come in-->
+					<action>Recognise-Voice</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Detect-User-Weight</action-type>
-				</action>
+				<action-sequence>
+				<!--Wheelchair will first recognise user's face, and then it will detect user's weight-->
+					<action>Recognise-Face</action>
+					<action>Detect-Weight</action>
+				</action-sequence>
 			</case>
 		</rule>
 		<rule>
@@ -45,34 +50,37 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action-type>
-					<action>Display-Recipe-in-Kitchen</action>
-					<action>Display-Exercise-in-Gym</action>
-				</action-type>
+				<action-sequence>
+					<action>Get-Health-Data</action>
+					<action>Store-Health-Data-In-Memory</action>
+				</action-sequence>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Stream-Video</action-type>
-				</action>
+				<action-sequence>
+					<action>Stream-Video</action>
+					<action>Store-Video-In-Memory</action>
+				</action-sequence>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Play-Music</action-type>
-				</action>
+				<action-sequence>
+					<action>Receive-Music-Preferences</action>
+					<action>Play-Music-Preferences</action>
+				</action-sequence>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Pick/Drop-User</action-type>
-				</action>
+				<action-sequence>
+					<action>Pick-Up-From-Location</action>
+					<action>Drop-Off-At-Destination</action>
+				</action-sequence>
 			</case>
 		</rule>
 		<rule>
@@ -82,71 +90,72 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Display-Comedy-Videos</action-type>
-				</action>
+				<action-type>
+					<action>Play-Comedy-Movie</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Display-Comedy-Photos</action-type>
-				</action>
+				<action-type>
+					<action>Play-Comedy-Movie</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Play-Jokes</action-type>
-				</action>
+				<action-type>
+					<action>Tell-Jokes</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Garden-Tour</action-type>
-				</action>
+				<action-type>
+					<action>Garden-Tour</action>
+				</action-type>
 			</case>
 		</rule>
 	</authorisation-rules>
 	<obligation-rules id="R2">
 		<rule>
-			<rule-name>Keep-volume-Maintained</rule-name>
+			<rule-name>Maintain-Volume</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Keep-Volume-Low-While-Communicating</action-type>
-				</action>
+				<action-type>
+					<action>Keep-Volume-Low-While-Communicating</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Keep-Silent-Mode-On-While-Streaming</action-type>
-				</action>
+				<action-type>
+					<action>Keep-Silent-Mode-On-While-Streaming</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Keep-Volume-Low-While-Playing-Music</action-type>
-				</action>
+				<action-type>
+					<action>Keep-Volume-Low-While-Playing-Music</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Say-Location-Names-Louder</action-type>
-				</action>
+				<action-type>
+				<!--Wheelchair can say location name that comes under communicating with the user, while doing so, it can keep volume low -->
+					<action>Keep-Volume-Low-While-Communicating</action>
+				</action-type>
 			</case>
 		</rule>
 		<rule>
@@ -156,106 +165,109 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
+				<action-choice>
+					<action>Monitor-User-Within-Time-Frame</action>
+					<action>Assist-User-Within-Time-Frame</action>
+				</action-choice>
+			</case>
+			<case>
+				<condition>
+					<device>Smart-Camera</device>
+				</condition>
+				<action-choice>
+					<action>Stream-Video-Within-Time-Frame</action>
+					<action>Capture-Photo-Within-Time-Frame</action>
+				</action-choice>
+			</case>
+			<case>
+				<condition>
+					<device>Smart-Speaker</device>
+				</condition>
+				<action-choice>
+					<action>Play-Music-Within-Time-Frame</action>
+					<action>Tell-Jokes-Within-Time-Frame</action>
+				</action-choice>
+			</case>
+			<case>
+				<condition>
+					<device>Smart-Wheelchair</device>
+				</condition>
+				<action-choice>
+					<action>Pick-Up-User-Within-Time-Frame</action>
+					<action>Drop-Off-User-Within-Time-Frame</action>
+				</action-choice>
+			</case>
+		</rule>
+		<rule>
+			<rule-name>Be-Patient</rule-name>
+			<device-type>Actuators</device-type>
+			<case>
+				<condition>
+					<device>Smart-Robot</device>
+				</condition>
 				<action-type>
-					<action>Complete-Monitoring-Request-Quickly</action>
-					<action>Complete-Assisting-Request-Quickly</action>
+					<action>Do-Not-Move-Away-While-Communicating</action>
 				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Snap-Photos-Promptly</action-type>
-				</action>
+				<action-type>
+					<action>Display-Snaps-Until-User-Stops</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Delay-in-Playing-Music</action-type>
-				</action>
+				<action-type>
+					<action>Play-Music-Until-User-Stops</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Pick/Drop-User-Promptly</action-type>
-				</action>
+				<action-type>
+					<action>Display-Locations-Until-User-Stops</action>
+				</action-type>
 			</case>
 		</rule>
 		<rule>
-			<rule-name>Keep-Patience</rule-name>
+			<rule-name>Protect-Self</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Move-Away-While-Communicating</action-type>
-				</action>
+				<action-type>
+					<action>Avoid-Obstacle</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Keep-Displaying-Snaps</action-type>
-				</action>
+				<action-type>
+					<action>Alert-On-Memory-Overload</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Keep-Playing-Music</action-type>
-				</action>
+				<action-type>
+					<action>Alert-On-Memory-Overload</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Keep-Displaying-Locations</action-type>
-				</action>
-			</case>
-		</rule>
-		<rule>
-			<rule-name>Self-Security</rule-name>
-			<device-type>Actuators</device-type>
-			<case>
-				<condition>
-					<device>Smart-Robot</device>
-				</condition>
-				<action>
-					<action-type>Avoid-Obstacle</action-type>
-				</action>
-			</case>
-			<case>
-				<condition>
-					<device>Smart-Camera</device>
-				</condition>
-				<action>
-					<action-type>Alert-On-Unnecessary-Touch</action-type>
-				</action>
-			</case>
-			<case>
-				<condition>
-					<device>Smart-Speaker</device>
-				</condition>
-				<action>
-					<action-type>Alert-On-Unnecessary-Music-Files</action-type>
-				</action>
-			</case>
-			<case>
-				<condition>
-					<device>Smart-Wheelchair</device>
-				</condition>
-				<action>
-					<action-type>Avoid-Obstacle</action-type>
-				</action>
+				<action-type>
+					<action>Avoid-Obstacle</action>
+				</action-type>
 			</case>
 		</rule>
 		<rule>
@@ -265,33 +277,33 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Face-Recognition</action-type>
-				</action>
+				<action-type>
+					<action>Recognise-Face</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Face-Recognition</action-type>
-				</action>
+				<action-type>
+					<action>Recognise-Face</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Voice-Recognition</action-type>
-				</action>
+				<action-type>
+					<action>Recognise-Voice</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Face-Recognition</action-type>
-				</action>
+				<action-type>
+					<action>Recognise-Face</action>
+				</action-type>
 			</case>
 		</rule>
 		<rule>
@@ -301,71 +313,71 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Report-Owner</action-type>
-				</action>
+				<action-type>
+					<action>Report-Owner</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Display-Message</action-type>
-				</action>
+				<action-type>
+					<action>Display-Message</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Play-Alert-Tune</action-type>
-				</action>
+				<action-type>
+					<action>Play-Alert-Tune</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Report-Owner</action-type>
-				</action>
+				<action-type>
+					<action>Report-Owner</action>
+				</action-type>
 			</case>
 		</rule>
 	</obligation-rules>
 	<prohibition-rule id="R3">
 		<rule>
-			<rule-name>Get-Closer-To-User</rule-name>
+			<rule-name>Get-Too-Close-To-User</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Go-Closer-To-User</action-type>
-				</action>
+				<action-type>
+					<action>Go-Too-Close-To-User</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Display-Message (do not touch)</action-type>
-				</action>
+				<action-type>
+					<action>Null-Execution</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Play-Tune (do not touch)</action-type>
-				</action>
+				<action-type>
+					<action>Null-Execution</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Move-Until-User-Sits</action-type>
-				</action>
+				<action-type>
+					<action>Null-Execution</action>
+				</action-type>
 			</case>
 		</rule>
 		<rule>
@@ -375,33 +387,33 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Enter-Into-Private-Locations-Without-Permission</action-type>
-				</action>
+				<action-type>
+					<action>Enter-Private-Locations-Without-Permission</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Capture-Anything-In-Private-Locations</action-type>
-				</action>
+				<action-type>
+					<action>Null-Execution</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Play-Music-Based-On-Private-Preferences</action-type>
-				</action>
+				<action-type>
+					<action>Null-Execution</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Enter-Into-Private-Locations-Without-Permission</action-type>
-				</action>
+				<action-type>
+					<action>Enter-Private-Locations-Without-Permission</action>
+				</action-type>
 			</case>
 		</rule>
 		<rule>
@@ -411,69 +423,69 @@
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Alter-Path-With-Excuse</action-type>
-				</action>
+				<action-type>
+					<action>Respond-To-Strangers</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Refrain-Stream</action-type>
-				</action>
+				<action-type>
+					<action>Respond-To-Strangers</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Refrain-Playing-Audio</action-type>
-				</action>
+				<action-type>
+					<action>Respond-To-Strangers</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Alter-Path-With-Excuse</action-type>
-				</action>
+				<action-type>
+					<action>Respond-To-Strangers</action>
+				</action-type>
 			</case>
 		</rule>  
 		<rule>
-			<rule-name>Disturb-unnecessarily</rule-name>
+			<rule-name>Disturb-Unnecessarily</rule-name>
 			<device-type>Actuators</device-type>
 			<case>
 				<condition>
 					<device>Smart-Robot</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Talk-If-No-One-Is-Communicating</action-type>
-				</action>
+				<action-type>
+					<action>Talk-If-No-One-Is-Communicating</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Camera</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Stream</action-type>
-				</action>
+				<action-type>
+					<action>Stream-Video-If-No-One-Is-Around</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Play-Musics</action-type>
-				</action>
+				<action-type>
+					<action>Play-Music-If-No-One-Is-Around</action>
+				</action-type>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
-				<action>
-					<action-type>Do-Not-Talk-If-No-One-Is-Communicating</action-type>
-				</action>
+				<action-type>
+					<action>Talk-If-No-One-Is-Communicating</action>
+				</action-type>
 			</case>
 		</rule>  
 	</prohibition-rule>
