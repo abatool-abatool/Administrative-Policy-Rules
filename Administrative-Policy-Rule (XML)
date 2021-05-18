@@ -9,9 +9,11 @@
 					<device>Smart-Robot</device>
 				</condition>
 				<action-sequence>
-					<action>Recognise-Face</action>
-					<action>Capture-Photo</action>
-					<action>Ask-Routine-Questions</action>
+					<action-type>
+						<action>Recognise-Face</action>
+						<action>Capture-Photo</action>
+						<action>Ask-Routine-Questions</action>
+					</action-type>
 				</action-sequence>
 			</case>
 			<case>
@@ -19,27 +21,34 @@
 					<device>Smart-Camera</device>
 				</condition>
 				<action-sequence>
-					<action>Stream-Video</action>
-					<action>Capture-Photo</action>
+					<action-type>
+						<action>Stream-Video</action>
+						<action>Capture-Photo</action>
+					</action-type>
 				</action-sequence>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Speaker</device>
 				</condition>
-				<action-type>
 				<!--Speaker at the main door recognise user's voice to let him/her come in-->
-					<action>Recognise-Voice</action>
-				</action-type>
+				<action-sequence>
+					<action-type>
+						<action>Recognise-Voice</action>
+						<action>Open-Door</action>
+					</action-type>
+				</action-sequence>
 			</case>
 			<case>
 				<condition>
 					<device>Smart-Wheelchair</device>
 				</condition>
 				<action-sequence>
+					<action-type>
 				<!--Wheelchair will first recognise user's face, and then it will detect user's weight-->
-					<action>Recognise-Face</action>
-					<action>Detect-Weight</action>
+						<action>Recognise-Face</action>
+						<action>Detect-Weight</action>
+					</action-type>
 				</action-sequence>
 			</case>
 		</rule>
@@ -51,8 +60,10 @@
 					<device>Smart-Robot</device>
 				</condition>
 				<action-sequence>
-					<action>Get-Health-Data</action>
-					<action>Store-Health-Data-In-Memory</action>
+					<action-type>
+						<action>Get-Health-Data</action>
+						<action>Store-Health-Data-In-Memory</action>
+					</action-type>
 				</action-sequence>
 			</case>
 			<case>
@@ -60,8 +71,10 @@
 					<device>Smart-Camera</device>
 				</condition>
 				<action-sequence>
-					<action>Stream-Video</action>
-					<action>Store-Video-In-Memory</action>
+					<action-type>
+						<action>Stream-Video</action>
+						<action>Store-Video-In-Memory</action>
+					</action-type>
 				</action-sequence>
 			</case>
 			<case>
@@ -69,8 +82,10 @@
 					<device>Smart-Speaker</device>
 				</condition>
 				<action-sequence>
-					<action>Receive-Music-Preferences</action>
-					<action>Play-Music-Preferences</action>
+					<action-type>
+						<action>Receive-Music-Preferences</action>
+						<action>Play-Music-Preferences</action>
+					</action-type>
 				</action-sequence>
 			</case>
 			<case>
@@ -78,8 +93,10 @@
 					<device>Smart-Wheelchair</device>
 				</condition>
 				<action-sequence>
-					<action>Pick-Up-From-Location</action>
-					<action>Drop-Off-At-Destination</action>
+					<action-type>
+						<action>Pick-Up-From-Location</action>
+						<action>Drop-Off-At-Destination</action>
+					</action-type>
 				</action-sequence>
 			</case>
 		</rule>
@@ -166,8 +183,10 @@
 					<device>Smart-Robot</device>
 				</condition>
 				<action-choice>
-					<action>Monitor-User-Within-Time-Frame</action>
-					<action>Assist-User-Within-Time-Frame</action>
+					<action-type>
+						<action>Monitor-User-Within-Time-Frame</action>
+						<action>Assist-User-Within-Time-Frame</action>
+					</action-type>
 				</action-choice>
 			</case>
 			<case>
@@ -175,8 +194,10 @@
 					<device>Smart-Camera</device>
 				</condition>
 				<action-choice>
-					<action>Stream-Video-Within-Time-Frame</action>
-					<action>Capture-Photo-Within-Time-Frame</action>
+					<action-type>
+						<action>Stream-Video-Within-Time-Frame</action>
+						<action>Capture-Photo-Within-Time-Frame</action>
+					</action-type>
 				</action-choice>
 			</case>
 			<case>
@@ -184,8 +205,10 @@
 					<device>Smart-Speaker</device>
 				</condition>
 				<action-choice>
-					<action>Play-Music-Within-Time-Frame</action>
-					<action>Tell-Jokes-Within-Time-Frame</action>
+					<action-type>
+						<action>Play-Music-Within-Time-Frame</action>
+						<action>Tell-Jokes-Within-Time-Frame</action>
+					</action-type>
 				</action-choice>
 			</case>
 			<case>
@@ -193,8 +216,10 @@
 					<device>Smart-Wheelchair</device>
 				</condition>
 				<action-choice>
-					<action>Pick-Up-User-Within-Time-Frame</action>
-					<action>Drop-Off-User-Within-Time-Frame</action>
+					<action-type>
+						<action>Pick-Up-User-Within-Time-Frame</action>
+						<action>Drop-Off-User-Within-Time-Frame</action>
+					</action-type>
 				</action-choice>
 			</case>
 		</rule>
